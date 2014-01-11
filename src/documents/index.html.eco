@@ -1,0 +1,21 @@
+---
+title: Blog posts
+layout: default
+---
+<% zero_pad = (x) -> if x < 10 then '0'+x else ''+x %>
+
+<h1>Posts archive</h1>
+<ul>
+<% for post in @getFilesAtPath("posts").toJSON(): %>
+    <li><%= post.date.getFullYear() + "-" + zero_pad(post.date.getMonth() + 1) %> <a href="<%= post.url %>"><%= post.title %></a></li>
+<% end %>
+</ul>
+<!-- 
+<h1>todo list:</h1>
+<ul>
+	<li>check all links for 404</li>
+	<li>update all test tables</li>
+	<li>check if all facts are correct</li>
+	<li>move images from sharovatov.ru and testcases to jsfiddle?</li>
+</ul>
+-->
