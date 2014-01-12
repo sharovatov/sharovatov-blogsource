@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>proper iOS pull-to-refresh</title>
+    <meta name="generator" content="DocPad v6.59.6" />
+    <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="alternate" type="application/atom+xml" title="Vitaly Sharovato" href="/atom.xml">
+</head>
+<body>
+    <h1>proper iOS pull-to-refresh</h1>
+<div><p>Most of the pull-to-refresh plugins or concepts I saw had drawbacks - some emulated native scroll with JS (seems slower and non-native to me), others (mobile gmail) hid scrollbar altogether, <a href="http://cubiq.org/dropbox/iscroll4/examples/pull-to-refresh/">others</a> made scrollbar appear as if some content is already scrolled. </p>
+<p>As no available app seemed good enough for me and project requirements required iOS only, I drafted <a href="https://github.com/sharovatov/my/tree/master/js_experiments/ios_pull-to-refresh">this</a>.</p>
+<p>Basically, everything what needs to be hardware accelerated, is actually accelerated.</p>
+<p><a href="http://sharovatov.ru/ptr/ptr.html">The testcase</a> seems to perform quite well on all my target platforms - iPhone4, 4s and 5.</p>
+</div>
+    <script >(function(){
+	/* Did we just livereload? */
+var log = !!(localStorage && console && console.log && true);
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReload completed at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
+}
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
+	});
+};
+	/* Inject socket into our page */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+};
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
+	}
+})();</script>
+    <div class="comments"></div>
+</body>
+</html>

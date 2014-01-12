@@ -3,8 +3,9 @@
 <head>
     <title><%= @document.title %></title>
     <%- @getBlock("meta").toHTML() %>
-    <%- @getBlock("styles").toHTML() %>
+    <%- @getBlock("styles").add(["/styles/style.css"]).toHTML() %>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="alternate" type="application/atom+xml" title="Vitaly Sharovato" href="/atom.xml">
 </head>
 <body>
     <%- @content %>

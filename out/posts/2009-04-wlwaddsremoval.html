@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Windows Live Messenger adds removal</title>
+    <meta name="generator" content="DocPad v6.59.6" />
+    <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="alternate" type="application/atom+xml" title="Vitaly Sharovato" href="/atom.xml">
+</head>
+<body>
+    <h1>Windows Live Messenger adds removal</h1>
+<div><p>If you use Windows Live Messenger 2009 and you don’t want to watch adds – there’re two simple ways to disable them:</p>
+<ul>
+<li><p>add rad.msn.com to a list of Restricted Sites in your Internet Explorer</p>
+</li>
+<li><p>add <code>.0.0.0 rad.msn.com</code> record to your <code>%systemroot%system32driversetchosts</code> file</p>
+</li>
+</ul>
+<p>Both ways will stop Live Messenger from downloading advertisement. I don’t know if these ways are legal, but we’re not touching Live Messenger, not disassembling it or doing anything specifically prohibited.</p>
+<p>As always, there’s a patch (<a href="http://apatch.org/">apatch</a>), but as it modifies Live Messenger dlls, it certainly breaches the EULA.</p>
+<p>The same approach can be used for blocking ads in all kinds of messengers – you just need to find out which host adds are served from and if your messenger uses IE settings, add it to restricted zone list, or to the hosts file with 0.0.0.0 address.</p>
+</div>
+    <script >(function(){
+	/* Did we just livereload? */
+var log = !!(localStorage && console && console.log && true);
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReload completed at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
+}
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
+	});
+};
+	/* Inject socket into our page */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+};
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
+	}
+})();</script>
+    <div class="comments"></div>
+</body>
+</html>

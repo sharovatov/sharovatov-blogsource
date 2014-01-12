@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shaky lines drawing tool for browser and nodejs</title>
+    <meta name="generator" content="DocPad v6.59.6" />
+    <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="alternate" type="application/atom+xml" title="Vitaly Sharovato" href="/atom.xml">
+</head>
+<body>
+    <h1>shaky lines drawing tool for browser and nodejs</h1>
+<div><p><a href="http://mrale.ph/">Vyacheslav Egorov</a> recently <a href="http://mrale.ph/blog/2012/11/25/shaky-diagramming.html">showed his useful helper tool that converts handwritten ASCII-based diagrams into images</a> - he wrote it in Dart, adding around 450 kbytes overhead to the code that could perfectly fit in 18 kbytes of heavily commented non-minimized javascript code (or ~8 kbytes of minified code). </p>
+<p>I thought this was a huge waste of resources and <a href="https://github.com/sharovatov/my/tree/master/js_experiments/shaky">rewrote the tool to pure js</a>, I just didn&#39;t see any reason for Dart here.</p>
+<p>To use this in console, run </p>
+<pre><code>node shaky-node.js textfile imagefile.png
+</code></pre><p>Please note that while <a href="https://github.com/LearnBoost/node-canvas/pull/231">this pull request</a> is not merged, there&#39;s no way to make node-canvas use custom font, so please install the ttf font locally. </p>
+<p>And please use the <code>shaky.html</code> file as a sample of in-browser use.</p>
+</div>
+    <script >(function(){
+	/* Did we just livereload? */
+var log = !!(localStorage && console && console.log && true);
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReload completed at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
+}
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
+	});
+};
+	/* Inject socket into our page */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+};
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
+	}
+})();</script>
+    <div class="comments"></div>
+</body>
+</html>

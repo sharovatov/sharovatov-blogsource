@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opera to reinvent the web?</title>
+    <meta name="generator" content="DocPad v6.59.6" />
+    <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="alternate" type="application/atom+xml" title="Vitaly Sharovato" href="/atom.xml">
+</head>
+<body>
+    <h1>Opera to reinvent the web?</h1>
+<div><p>Opera promises to reinvent the web tomorrow. I mean, really, reinvent the web? Invent TCP/IP, HTTP, DNS, HTML/CSS/JS, CGI, all other stuff that web consists of? I doubt.</p>
+<p>Different sources <a href="http://www.geeksaresexy.net/2009/06/15/opera-to-reinvent-the-web-web-waits-for-fat-lady-to-sing/">speculate</a> that it’s going to be something cloud-related. Maybe it will be a p2p-based traffic sharing with some clever algorithm to determine where to download the data from? But then I wouldn’t like anybody to be able to sniff my data. Maybe they will install a CDN to make useless Opera Turbo giving at least some performance benefit to users. Don’t know, we’ll see very soon.</p>
+<p>But because of the last <a href="http://sharovatov.wordpress.com/2009/06/11/windows-7-will-be-shipped-without-ie8-in-europe/">unfair actions</a> that were taken by Opera against IE, I (from moral prospective) really hope that all the expenses they took for Opera 10 PR won’t significantly increase their market share. Competition should be fair, Firefox was able to get the same market share as IE in Germany without making users life harder. I really hope that lobbying expenses were higher than the income.</p>
+</div>
+    <script >(function(){
+	/* Did we just livereload? */
+var log = !!(localStorage && console && console.log && true);
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReload completed at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
+}
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
+	});
+};
+	/* Inject socket into our page */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t, s);
+};
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
+	}
+})();</script>
+    <div class="comments"></div>
+</body>
+</html>
