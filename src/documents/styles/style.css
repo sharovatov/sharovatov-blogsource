@@ -1,31 +1,24 @@
+html {
+    -webkit-text-size-adjust: 100%;
+}
 body {
-    max-width: 800px;
-    padding: 10px 20px;
-}
-@media screen and (orientation:landscape) {
-    body {
-        padding-left: 100px;
-    }
-}
-/* any element with this class has no margins/paddings */
-.blank {
-    margin: 0; padding: 0;
-}
-
-/* any post content goes here */
-.post {
-    font: 20px Palatino, Georgia, Times, "Times New Roman", serif;
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 10px 12px 12px 12px;
+    font: 16px Helvetica, sans-serif;
     line-height: 160%;
 }
-    /* disqus comments block to go inside the post */
-    .comments {
-        
-    }
+.postslist {
+    margin: 0; padding: 0;
+    list-style-position: inside;
+}
+.date {
+    color: #ccc;
+}
 
 h1 {
-    font-family: Palatino, Georgia, Times, "Times New Roman", serif;
     font-weight: bold;
-    font-size: 1.33em;
+    font-size: 1.1em;
     line-height: 1.25em;
 }
 a {

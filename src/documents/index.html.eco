@@ -5,17 +5,8 @@ layout: default
 <% month_name = (x) -> ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][x] %>
 
 <h1>Posts</h1>
-<ul class="blank">
+<ul class="postslist">
 <% for post in @getCollection('posts').toJSON(): %>
-    <li><%= month_name(post.date.getMonth()) + " " + post.date.getFullYear() %> <a href="<%= post.url %>"><%= post.title %></a></li>
+    <li><a href="<%= post.url %>"><%= post.title %></a> <span class="date"><%= month_name(post.date.getMonth()) + " " + post.date.getFullYear() %></span></li>
 <% end %>
 </ul>
-<!-- 
-<h1>todo list:</h1>
-<ul>
-	<li>check all links for 404</li>
-	<li>update all test tables</li>
-	<li>check if all facts are correct</li>
-	<li>move images from sharovatov.ru and testcases to jsfiddle?</li>
-</ul>
--->
