@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
-<h1><%= @document.title %></h1>
-<div><%- @content %></div>
-<div class="comments"><%- @getDisqus() %></div>
+<div class="post">
+ <h1><%= @document.title %></h1>
+ <div><%- @content %></div>
+ <div class="comments"><%- @getDisqus() %></div>
+</div>

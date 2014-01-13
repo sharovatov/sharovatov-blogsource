@@ -2,12 +2,12 @@
 title: Blog posts
 layout: default
 ---
-<% zero_pad = (x) -> if x < 10 then '0'+x else ''+x %>
+<% month_name = (x) -> ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][x] %>
 
-<h1>Posts archive</h1>
-<ul>
+<h1>Posts</h1>
+<ul class="blank">
 <% for post in @getCollection('posts').toJSON(): %>
-    <li><%= post.date.getFullYear() + "-" + zero_pad(post.date.getMonth() + 1) %> <a href="<%= post.url %>"><%= post.title %></a></li>
+    <li><%= month_name(post.date.getMonth()) + " " + post.date.getFullYear() %> <a href="<%= post.url %>"><%= post.title %></a></li>
 <% end %>
 </ul>
 <!-- 

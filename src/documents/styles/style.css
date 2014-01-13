@@ -1,3 +1,36 @@
-.comments {
-    
+body {
+    max-width: 800px;
+    padding: 10px 20px;
+}
+@media screen and (orientation:landscape) {
+    body {
+        padding-left: 100px;
+    }
+}
+/* any element with this class has no margins/paddings */
+.blank {
+    margin: 0; padding: 0;
+}
+
+/* any post content goes here */
+.post {
+    font: 20px Palatino, Georgia, Times, "Times New Roman", serif;
+    line-height: 160%;
+}
+    /* disqus comments block to go inside the post */
+    .comments {
+        
+    }
+
+h1 {
+    font-family: Palatino, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 1.33em;
+    line-height: 1.25em;
+}
+a {
+    color: rgb(32, 0, 127);
+}
+a:visited {
+    color: rgb(32, 0, 127);
 }

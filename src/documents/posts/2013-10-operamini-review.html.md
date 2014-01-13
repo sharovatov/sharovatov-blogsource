@@ -2,6 +2,10 @@
 layout: post
 date: 2013-10
 title: Opera Mini review
+tags: 
+    - browsers
+    - webdev
+    - opera
 ---
 
 This is the exerpt of my Opera Mini review for Mail Ru where we had to decide  what browsers we had to support for one of our mobile projects and what functionality had to be provided for the target platforms. 

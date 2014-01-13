@@ -2,6 +2,8 @@
 layout: post
 date: 2013-11
 title: Code comprehension performance and code style
+tags:
+    - programming
 ---
 
 I’ve recently come across an old but interesting [paper by Elliot Soloway and Kate Ehrlich on the code comprehension](http://www.researchgate.net/publication/220071417_Empirical_Studies_of_Programming_Knowledge/file/d912f512cb2e91a8c1.pdf).
