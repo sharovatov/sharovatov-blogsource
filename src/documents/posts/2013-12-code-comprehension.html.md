@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2013-11
+date: 2013-12
 title: Code comprehension performance and code style
 tags:
     - programming
