@@ -1,5 +1,5 @@
 ---
-title: Blog posts
+title: Vitaly Sharovatov → posts
 layout: default
 ---
 <% month_name = (x) -> ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][x] %>

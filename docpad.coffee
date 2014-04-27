@@ -22,6 +22,9 @@ docpadConfig = {
     collections:
         posts: ->
             @getCollection("html").findAllLive({relativeOutDirPath: 'posts'},[{date:-1}])
+        books: ->
+            @getCollection("html").findAllLive({relativeOutDirPath: 'books'},[{date:-1}])
+
 
 }
 
