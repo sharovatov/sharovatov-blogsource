@@ -5,7 +5,7 @@ title: Android native browsers scrolling bug when gif animation is present
 tags:
     - css
     - webdev
-    - ios6
+    - android
 ---
 
 Android standard browser (up to kitkat 4.4) is usually more expensive to support than iOS Safari or Android Chrome, partly because it’s buggy and mostly because of the lack of tooling — Android webkit doesn’t expose a javascript debbuging API and hence the only way to remotely debug javascript is from within the page — using what’s available — putting debug data into a DOM element or even plainly alerting some intermediate results. *rant mode on* Even IE5.5 allowed javascript debugging with MS Office Script Debugger but who at Google cares about what’s considered a common sense for at least 12 years already? *rant mode off*. For browsers that don’t expose a JS debugging API (and having no developer tools) the only tool worthy of note is [weinre](http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html) which can be of help for basic CSS and DOM inspection, but it still uses current page DOM and therefore will never be able to provide any access to the javascript engine internals (e.g. provide breakpoints capability).
