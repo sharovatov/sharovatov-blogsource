@@ -21,10 +21,5 @@ While playing with an https issue I discovered a few things in current HTTPS sta
  All other browsers follow the RFC and a user can manually pin an arbitrary certificate to the site he’s testing. Here’s a screenshot of a pinned self-signed certificate applied to a host not matching the certificate’s Common Name: 
 	![chrome self-signed certificate](http://sharovatov.ru/screenshots/ssl-chrome-selfsigned.png)
 	So if you use self-signed certificate on your test environment, be sure to generate it correctly and list all domain variations in certificate’s SAN list.
-	
- * Only Firefox still supports OCSP Stapling, all other browsers have it disabled:
-	
-	![Firefox OSCP stapling](http://sharovatov.ru/screenshots/ssl-oscp-stapling.png)
-	
+
  * A certificate can have an IP address in the Common Name / SAN list, and this could technically be leveraged to save clients DNS lookup time if static files are served from a separate server with this IP address. However, this approach would also require full control over the set IP address for the whole life of the website (if IP address control is lost, a huge security issue is created). And in any case, in HTTPS scenario it’s almost always better to reuse an existing connection than to create a separate one.
- 
