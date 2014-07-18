@@ -91,25 +91,35 @@ IE8:
 
 ![IE8 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE8.png) 
 
-If the user presses ”yes”, only secure content will be loaded regardless of its type. If user presses ”no”, both passive and active mixed security content will be loaded and the browser address bar will _not_ show the padlock, rendering the view similarly to normal http pages:
+If the user presses ”yes”, only secure content will be loaded regardless of its type, the page will be considered secure and padlock icon will be retained:
 
 IE6:
-  ![IE6 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE6.png) 
-IE7:
-  ![IE7 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE7.png) 
-IE8:
-  ![IE7 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE8.png) 
 
-If the user presses ”no”, no mixed security content will be loaded, but the site will be considered secured and the corresponding padlock icon will be shown:
+![IE6 hides mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE6.png) 
+
+IE7:
+
+![IE7 hides mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE7.png) 
+
+IE8:
+
+![IE7 hides mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE8.png) 
+
+If the user presses ”no”, both passive and active mixed security content will be loaded and the browser address bar will _not_ show the padlock, rendering the view similarly to normal http pages:
 
 IE6:
-  ![IE6 without mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE6.png) 
-IE7:
-  ![IE7 without mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE7.png) 
-IE8:
-  ![IE7 without mixed security content](http://sharovatov.ru/screenshots/mixed-content-refused-winXP-IE8.png) 
 
-So if your site has to support IE 6-7-8, beware the mixed security content dialog, which looks very suspicious to normal users.
+![IE6 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE6.png) 
+
+IE7:
+
+![IE7 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE7.png) 
+
+IE8:
+
+![IE7 shows mixed security content](http://sharovatov.ru/screenshots/mixed-content-accepted-winXP-IE8.png) 
+
+So if your site has to support IE 6-7-8, beware the mixed security content dialog, which looks **very** suspicious to normal users.
 
 With IE9 Microsoft [changed the default behaviour of their browser](http://blogs.msdn.com/b/ie/archive/2011/06/23/internet-explorer-9-security-part-4-protecting-consumers-from-malicious-mixed-content.aspx), then [Chrome followed](http://googleonlinesecurity.blogspot.ru/2011/06/trying-to-end-mixed-scripting.html) and [Firefox followed](https://blog.mozilla.org/security/2013/05/16/mixed-content-blocking-in-firefox-aurora/). 
 
@@ -117,116 +127,115 @@ Safari seems to not care about the type of mixed security content, it loads any 
 
 Firefox and Chrome behave similarly on both OS X and Windows.
 
-To illustrate the behaviours of all the modern browsers I prepared a table of testcases and resulting screenshots in IE9+/Firefox/Safari/Chrome (IE6-7-8 behaviour is described above):
+To illustrate the behaviours of all the modern browsers I prepared a table of testcases and resulting screenshots (older IE6-7-8 behaviour is described above):
 
 <style type="text/css">
-.not-loaded {color: red;}
-.loaded {color: green;}
+.not-loaded a {color: red;}
+.loaded a {color: green;}
 </style>
 
 <table>
     <thead>
         <tr>
-            <td rel="col">Resource</td>
-            <td rel="row">Browser</td>
+            <td rel="col">Resource / Browser</td>
             <td>IE9</td>
             <td>IE10</td>
             <td>IE11</td>
-            <td>Firefox</td>
+            <td>Firefox 30</td>
             <td>Chrome 35</td>
-            <td>Safari</td>
+            <td>Safari 7</td>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td rel="row">Iframe (<a href="https://ssl.sharovatov.ru/mixed/iframe.html">test</a>)</td>
-            <td class="not-loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-ie9-win7.png">No</a></td>
-            <td class="not-loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-ie10-win7.png">No</a></td>
-            <td class="not-loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-ie11-win7.png">No</a></td>
-            <td class="not-loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-firefox.png">No</a></td>
-            <td class="not-loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-chrome.png">No</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/iframe-safari.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/iframe-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/iframe-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/iframe-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/iframe-firefox.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/iframe-chrome.png">No</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/iframe-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Script (<a href="https://ssl.sharovatov.ru/mixed/script.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-ie9-win7.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-ie10-win7.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-ie11-win7.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/script-safari.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/script-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/script-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/script-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/script-firefox.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/script-chrome.png">No</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/script-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Stylesheet (<a href="https://ssl.sharovatov.ru/mixed/style.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-ie9-win7.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/stylesheet-safari.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-firefox.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-chrome.png">No</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Font (<a href="https://ssl.sharovatov.ru/mixed/font.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/font-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Image (<a href="https://ssl.sharovatov.ru/mixed/image.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/image-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/image-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Flash (<a href="https://ssl.sharovatov.ru/mixed/flash.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">https flash + http xhr (<a href="https://ssl.sharovatov.ru/mixed/flash-xhr.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/flash-xhr-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">js XHR (<a href="https://ssl.sharovatov.ru/mixed/xhr.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/xhr-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Audio (<a href="https://ssl.sharovatov.ru/mixed/audio.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/audio-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/audio-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Video (<a href="https://ssl.sharovatov.ru/mixed/video.html">test</a>)</td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-ie9.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-ie10.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-ie11.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-firefox.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-chrome.png">Yes</a></td>
-            <td class="loaded"><a href="http://ssl.sharovatov.ru/mixed/video-safari.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-IE9.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-IE10.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-IE11.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-firefox.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-chrome.png">Yes</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/video-safari.png">Yes</a></td>
         </tr>
 
     </tbody>
