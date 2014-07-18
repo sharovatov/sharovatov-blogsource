@@ -10,20 +10,60 @@ tags:
 
 Here’s a list of screenshots of all the relevant browsers displaying normal valid (DV) certificate-encrypted site:
 
-Windows XP IE6: 
+Windows XP IE6:
+
 ![IE6 secure](http://sharovatov.ru/screenshots/secure-winXP-IE6.png)
+
 Windows XP IE7: 
+
 ![IE7 secure](http://sharovatov.ru/screenshots/secure-winXP-IE7.png)
+
 Windows XP IE8: 
+
 ![IE8 secure](http://sharovatov.ru/screenshots/secure-winXP-IE8.png)
-Windows 7 IE9: ![IE9 secure](http://sharovatov.ru/screenshots/secure-win7-IE9.png)
-Windows 7 IE10: ![IE10 secure](http://sharovatov.ru/screenshots/secure-win7-IE10.png)
-Windows 7 IE11: ![IE11 secure](http://sharovatov.ru/screenshots/secure-win7-IE11.png)
-Windows 7 Firefox: ![Firefox secure](http://sharovatov.ru/screenshots/secure-win7-firefox.png)
-Windows 7 Chrome: ![Chrome secure](http://sharovatov.ru/screenshots/secure-win7-chrome.png)
-OS X Chrome: ![Chrome secure](http://sharovatov.ru/screenshots/secure-OSX-Chrome.png)
-OS X Safari: ![Safari secure](http://sharovatov.ru/screenshots/secure-OSX-Chrome.png)
-OS X Firefox: ![Firefox secure](http://sharovatov.ru/screenshots/secure-OSX-Chrome.png)
+
+Windows 7 IE9:
+
+![IE9 secure](http://sharovatov.ru/screenshots/secure-win7-IE9.png)
+
+Windows 7 IE10:
+
+![IE10 secure](http://sharovatov.ru/screenshots/secure-win7-IE10.png)
+
+Windows 7 IE11:
+
+![IE11 secure](http://sharovatov.ru/screenshots/secure-win7-IE11.png)
+
+Windows 7 Firefox:
+
+![Firefox secure](http://sharovatov.ru/screenshots/secure-win7-firefox.png)
+
+Windows 7 Chrome:
+
+![Chrome secure](http://sharovatov.ru/screenshots/secure-win7-chrome.png)
+
+OS X Chrome:
+
+![Chrome secure](http://sharovatov.ru/screenshots/secure-OSX-chrome.png)
+
+OS X Safari:
+
+![Safari secure](http://sharovatov.ru/screenshots/secure-OSX-safari.png)
+
+OS X Firefox:
+
+![Firefox secure](http://sharovatov.ru/screenshots/secure-OSX-firefox.png)
+
+iOS6 and iOS7 Safari:
+
+![iOS6 Safari secure](http://sharovatov.ru/screenshots/secure-iOS6.png)
+![iOS7 Safari secure](http://sharovatov.ru/screenshots/secure-iOS7.png)
+
+Android 4.2 webkit and Chrome:
+
+![android 4 webkit secure](http://sharovatov.ru/screenshots/secure-android4-webkit.png)
+![android 4 chrome secure](http://sharovatov.ru/screenshots/secure-android4-chrome.png)
+
 
 All of them have a padlock icon of some sort, which tech-savvy users associate with secure connection.
 
@@ -35,16 +75,21 @@ Briefly, mixed security content case is handled differently for EV and common ce
 
  * EV: a page is considered not TLS-validated if it has an EV cert and the page tries loading _any_ mixed content: images, scripts, iframes, video, objects; the EV green bar disappears.
 
- * non-EV: mixed security content is divided into two types: passive and active. Passive mixed security content usually includes images, video, objects (flash included), audio — everything that can’t change the DOM. Browsers _load_ passive mixed security content though this fact is indicated to the user, usually by showing ”insecure mixed content” icon somewhere in the address bar or elsewhere in the UI. And the active mixed security content (usually all the content that can modify DOM — scripts, stylesheets, iframes, fonts) _is not_ loaded by most of the browsers and a security warning is usually dumped to the console log.
+ * non-EV: mixed security content is divided into two types: **passive** and **active**. **Passive** mixed security content usually includes images, video, objects (flash included), audio — everything that can’t change the DOM. Browsers _load_ passive mixed security content though this fact is indicated to the user, usually by showing ”insecure mixed content” icon somewhere in the address bar or elsewhere in the UI. And the **active** mixed security content (usually all the content that can modify DOM — scripts, stylesheets, iframes, fonts) _is not_ loaded by most of the browsers and a security warning is usually dumped to the console log.
 
 Also note that [IE up to version 9 did not differentiate between passive and active mixed security content](http://blogs.msdn.com/b/askie/archive/2009/05/14/mixed-content-and-internet-explorer-8-0.aspx), but employed a different user warning technique: whenever _any_ mixed security content occurs on the page, IE asks user if he wants to allow loading only secure content: 
 
 IE6:
-  ![IE6 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE6.png) 
+
+![IE6 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE6.png) 
+
 IE7:
-  ![IE7 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE7.png) 
+
+![IE7 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE7.png) 
+
 IE8:
-  ![IE8 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE8.png) 
+
+![IE8 asking if only secure content is to be loaded](http://sharovatov.ru/screenshots/mixed-content-dialog-winXP-IE8.png) 
 
 If the user presses ”yes”, only secure content will be loaded regardless of its type. If user presses ”no”, both passive and active mixed security content will be loaded and the browser address bar will _not_ show the padlock, rendering the view similarly to normal http pages:
 
