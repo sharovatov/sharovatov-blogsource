@@ -167,19 +167,19 @@ To illustrate the behaviours of all the modern browsers I prepared a table of te
         </tr>
         <tr>
             <td rel="row">Stylesheet (<a href="https://ssl.sharovatov.ru/mixed/style.html">test</a>)</td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE9.png">No</a></td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE10.png">No</a></td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-IE11.png">No</a></td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-firefox.png">No</a></td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-chrome.png">No</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/stylesheet-safari.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/style-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/style-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/style-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/style-firefox.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/style-chrome.png">No</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/style-safari.png">Yes</a></td>
         </tr>
         <tr>
             <td rel="row">Font (<a href="https://ssl.sharovatov.ru/mixed/font.html">test</a>)</td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE9.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE10.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-IE11.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-firefox.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/font-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/font-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/font-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/font-firefox.png">No</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-chrome.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/font-safari.png">Yes</a></td>
         </tr>
