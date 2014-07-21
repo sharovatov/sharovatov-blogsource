@@ -35,9 +35,9 @@ There’s an [in-progress spec explaining what should be considered mixed securi
 
 With regards to the certificate type, mixed security content case is handled differently for EV and DV (commonly used) certificates:
 
- * EV: a page is considered not TLS-validated if it has an EV cert and the page tries loading _any_ mixed content: images, scripts, iframes, video, objects; the EV green bar disappears.
+ * EV — a page is considered not TLS-validated if it has an EV cert and the page tries loading _any_ mixed content: images, scripts, iframes, video, objects; the EV green bar disappears.
 
- * non-EV: mixed security content is divided into two types: **passive** and **active**. **Passive** mixed security content usually includes images, video, objects (flash included), audio — everything that can’t change the DOM. Browsers _load_ passive mixed security content though this fact is indicated to the user, usually by showing ”insecure mixed content” icon somewhere in the address bar or elsewhere in the UI. And the **active** mixed security content (usually all the content that can modify DOM — scripts, stylesheets, iframes, fonts) _is not_ loaded by most of the browsers and a security warning is usually dumped to the console log.
+ * non-EV — mixed security content is divided into two types: **passive** and **active**. **Passive** mixed security content usually includes images, video, objects (flash included), audio — everything that can’t change the DOM. Browsers _load_ passive mixed security content though this fact is indicated to the user, usually by showing ”insecure mixed content” icon somewhere in the address bar or elsewhere in the UI. And the **active** mixed security content (usually all the content that can modify DOM — scripts, stylesheets, iframes, fonts) _is not_ loaded by most of the browsers and a security warning is usually dumped to the console log.
 
 To illustrate the behaviours of all the modern browsers I prepared a table of testcases and resulting screenshots (older IE6-7-8 behaviour is described above):
 
@@ -108,7 +108,7 @@ To illustrate the behaviours of all the modern browsers I prepared a table of te
             <td rel="row">Flash (<a href="https://ssl.sharovatov.ru/mixed/flash.html">test</a>)</td>
             <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/flash-IE10.png">No</a></td>
             <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/flash-IE10.png">No</a></td>
-            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/flash-IE11.png">No[flash-IE11]</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/flash-IE11.png">No</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-firefox.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-chrome.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-safari.png">Yes</a></td>
@@ -117,7 +117,7 @@ To illustrate the behaviours of all the modern browsers I prepared a table of te
             <td rel="row">https flash + http xhr (<a href="https://ssl.sharovatov.ru/mixed/flash-xhr.html">test</a>)</td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE9.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE10.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE11.png">Yes[flash-xhr-IE11]</a></td>
+            <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-IE11.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-firefox.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-chrome.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/flash-xhr-safari.png">Yes</a></td>
@@ -166,47 +166,14 @@ Provided tests show that browsers handle mixed security content case quite diffe
  
  * When IE9 introduced special handling for passive mixed security content, Chrome and Firefox had to follow, and they did so: [first Chrome](http://googleonlinesecurity.blogspot.ru/2011/06/trying-to-end-mixed-scripting.html) and [two years later Firefox](https://blog.mozilla.org/security/2013/05/16/mixed-content-blocking-in-firefox-aurora/) started distinguishing passive and active mixed security content, both browsers are now able to detect when mixed security content is loaded and block what they consider active mixed security content; passive mixed security content is loaded with a corresponding UI change. To me, Chrome padlock UI looks cleaner and saner — when passive mixed security content is loaded, padlock icon still persists but a yellow warning sign is shown on top. Both Firefox and Chrome behave similarly on OS X and Windows.
 
-* Chrome persists user’s choice to load active mixed security content for the site: if user chooses to load http iframe on one page, http-served script will be loaded on another page. Neither IE nor Firefox persist the user’s choice (which makes sense to me). Safari just silently loads mixed security content and removes the padlock icon.
+* Chrome persists user’s choice to load active mixed security content for the site: if user chooses to load http iframe on one page, http-served script will be loaded on another page. Neither IE nor Firefox persist the user’s choice (which makes sense to me). Safari has nothing to persist as it always loads the content.
 
-Almost in all cases browsers warn users with a console.log warning or error message.
+* Windows 8 Metro IE10 doesn’t have any UI for showing mixed security content
 
+* IE9, IE10 and IE11 consider flash as active mixed security content, other browsers treat it as passive mixed security content; so IE9+ blocks the flash object from downloading and there’s a specific bug easy to spot [on the screenshot](http://sharovatov.ru/screenshots/flash-IE11.png) — the loading spinner never stops rotating. Which, combined with the IE’s usual ”Only secure content is displayed” dialog makes http-based flash on https pages almost unusable.
 
-[1] IE8 upon understanding that the page contains mixed security content, by default shows a modal dialog asking to confirm if insecure content has to be loaded or not. If user chooses to load the insecure content, the insecure content is loaded and the address bar is modified accordingly (no padlock is shown).
-[2] IE9+ apart from changing the address bar (removing the padlock icon) for the mixed security content, also has a special UI element notifying user that the page contains insecure content: 
-  !(IE9 UI security warning)[http://sharovatov.ru/screenshots/iframe-ie9-2]
+* IE9, IE10, IE11 and Safari **do not** consider http-XHR from flash as mixed security content. Both IE and Safari retain the padlock icon as if all requests were made through a secured connection. Even the console log is empty of warnings or errors. To me this quite clearly seems to be a security hole.
 
-[3] win8 Metro IE10 doesn’t have any UI for showing mixed security content
+* IE9 does not support cross-domain XHR, XDomainRequest is used instead. XHR — explain in details!
 
-[flash-IE11] if you look closely at the screenshot, you’ll see that IE11 blocks the flash object from downloading but the loading spinner never stops rotating. Which, combined with the IE’s usual ”Only secure content is displayed” dialog makes http-based flash on https pages almost unuseable.
-
-[flash-xhr-IE11] As you can see on the screenshot, though the cross-domain request was done from flash object to a **http** resource, no warnings are logged in the console.log, no UI changes occur, IE11 considers the page perfectly secured and safe. Safari does the same — silently loads the data and all seems to be secure. But Firefox and Chrome follow their own logics here — if anything is loaded from an insecure source, browser warns the user. 
-
-iOS Safari doesn't have any "insecure mixed content" icon, it just doesn't show the padlock icon at all if any mixed security content is present on the page while loading all the resources. -- double check --
-
-
-
-## Details of mixed security content display.
-
-None of the browsers follow the available specs closely, all have different history and own thoughts on how to handle this case.
-
-
-
-All desktop browsers understand the concept of [mixed security content](http://www.w3.org/TR/wsc-ui/#securepage) and have different UIs for the address bar when the mixed security content is loaded:
-
-![different UIs for TLS-authenticated sites and sites with mixed security content](http://sharovatov.ru/screenshots/browsers-uis.png)
-
-
-
-Desktop browsers generally behave in three different ways: 
-
- * ask a user if he wants to load mixed security content or not
- * block some content and warn the user using some UI method
-
-
-
--- Test https://www.bennish.net/mixed-content.html in all browsers --
-
---Prepare a set of pages on ssl.sharovatov.ru that have different types of mixed security content, test then in all browsers (mobile and desktop) and AJAX and posting a form to a http page --
-
--- fix ssl.sharovatov.ru cert - write to rapidssl --
-
+* iOS Safari doesn't have any "insecure mixed content" icon, it just doesn't show the padlock icon at all if any mixed security content is present on the page while loading all the resources. 
