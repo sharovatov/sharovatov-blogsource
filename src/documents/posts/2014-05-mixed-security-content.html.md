@@ -124,10 +124,10 @@ To illustrate the behaviours of all the modern browsers I prepared a table of te
         </tr>
         <tr>
             <td rel="row">js XHR (<a href="https://ssl.sharovatov.ru/mixed/xhr.html">test</a>)</td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE9.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE10.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE11.png">Yes</a></td>
-            <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-firefox.png">Yes</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE9.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE10.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/xhr-IE11.png">No</a></td>
+            <td class="not-loaded"><a href="http://sharovatov.ru/screenshots/xhr-firefox.png">No</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-chrome.png">Yes</a></td>
             <td class="loaded"><a href="http://sharovatov.ru/screenshots/xhr-safari.png">Yes</a></td>
         </tr>
@@ -170,10 +170,10 @@ Provided tests show that browsers handle mixed security content case quite diffe
 
 * Windows 8 Metro IE10 doesn’t have any UI for showing mixed security content
 
-* IE9, IE10 and IE11 consider flash as active mixed security content, other browsers treat it as passive mixed security content; so IE9+ blocks the flash object from downloading and there’s a specific bug easy to spot [on the screenshot](http://sharovatov.ru/screenshots/flash-IE11.png) — the loading spinner never stops rotating. Which, combined with the IE’s usual ”Only secure content is displayed” dialog makes http-based flash on https pages almost unusable.
+* IE9, IE10 and IE11 consider flash as active mixed security content, other browsers treat it as passive mixed security content; so IE9+ blocks the flash object from downloading and there’s a specific bug easy to spot [on the screenshot](http://sharovatov.ru/screenshots/flash-IE11.png) — the loading spinner never stops rotating. Which, combined with the IE’s usual ”Only secure content is displayed” dialog makes http-based flash on HTTPS pages almost unusable.
 
-* IE9, IE10, IE11 and Safari **do not** consider http-XHR from flash as mixed security content. Both IE and Safari retain the padlock icon as if all requests were made through a secured connection. Even the console log is empty of warnings or errors. To me this quite clearly seems to be a security hole.
+* IE9, IE10, IE11 and Safari **do not** consider HTTP-XHR from flash as mixed security content. Both IE and Safari retain the padlock icon as if all requests were made through a secured connection. Even the console log is empty of warnings or errors. To me this quite clearly seems to be a security hole.
 
-* IE9 does not support cross-domain XHR, XDomainRequest is used instead. XHR — explain in details!
+* IE9 does not support cross-domain XHR, XDomainRequest is used instead, which [will block any requests to HTTP resource from a HTTPS page](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx). IE10 [started supporting CORS-enabled XHR](http://blogs.msdn.com/b/ie/archive/2012/02/09/cors-for-xhr-in-ie10.aspx), but both IE10 and IE11 block CORS XHR requests to the HTTP page with a simple ”access denied” message in the console log. Safari follows its usual procedure — loads the content but removes the padlock icon, Firefox considers XHR to a HTTP active mixed security content and blocks it with its usual warning icon, Chrome considers AJAX _passive_ mixed security content, **loads** the content and adds its usual passive mixed security content informational triangle on top of the padlock icon.
 
 * iOS Safari doesn't have any "insecure mixed content" icon, it just doesn't show the padlock icon at all if any mixed security content is present on the page while loading all the resources. 
