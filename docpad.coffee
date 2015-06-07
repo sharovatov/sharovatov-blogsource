@@ -1,6 +1,6 @@
 docpadConfig = {
 
-    outPath: "../OUTPUT"
+    outPath: "../sharovatov.github.io"
 
     plugins:
         sitemap:
