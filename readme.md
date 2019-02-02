@@ -1,15 +1,7 @@
 # github pages blog
 
-old blogposts were imported from my old blogs:
+Source files for the blog.
 
-* sharovatov.wordpress.com
-* bitari.blogpost.com
+Some pages are from 2006 till 2014 and are all about frontend development.
 
-todo:
-
-* check all links for 404
-* update all test tables
-* check if all facts are correct
-* move images from sharovatov.ru to /files
-* move testcases to jsfiddle
-
+Posts from 2019 are mostly about management.
