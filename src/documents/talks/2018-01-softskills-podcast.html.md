@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2018-12
-title: Setting proper interview process
+date: 2019-01
+title: Soft skills, their importance and how to grow them
 place: IT Recruiter school podcast
 tags:
     - management
