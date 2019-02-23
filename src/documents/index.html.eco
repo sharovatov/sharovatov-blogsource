@@ -11,6 +11,13 @@ layout: default
 <% end %>
 </ul>
 
+<h1>Talks</h1>
+<ul class="postlist">
+<% for talk in @getCollection('talks').toJSON(): %>
+    <li><a href="<%= talk.url %>"><%= talk.title %></a> <span class="date"><%= month_name(talk.date.getMonth()) + " " + talk.date.getFullYear() %></span></li>
+<% end %>
+</ul>
+
 <h1>Archive posts</h1>
 <p>These posts are left for historical reasons only</p>
 <ul class="postslist">
