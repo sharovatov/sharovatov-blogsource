@@ -2,6 +2,7 @@
 layout: post
 date: 2016-10
 title: Iterative processes changes
+place: Badoo techleads meetup
 tags:
     - management
     - motivation

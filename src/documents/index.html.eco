@@ -14,7 +14,7 @@ layout: default
 <h1>Talks</h1>
 <ul class="postslist">
 <% for talk in @getCollection('talks').toJSON(): %>
-    <li><a href="<%= talk.url %>"><%= talk.title %></a> <span class="date"><%= month_name(talk.date.getMonth()) + " " + talk.date.getFullYear() %></span></li>
+    <li><a href="<%= talk.url %>"><%= talk.title %></a> @ <%= talk.place %> <span class="date"><%= month_name(talk.date.getMonth()) + " " + talk.date.getFullYear() %></span></li>
 <% end %>
 </ul>
 
