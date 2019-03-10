@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2019-02
+date: 2019-03
 title: Мотивация — основы, заработная плата
 tags:
     - management
