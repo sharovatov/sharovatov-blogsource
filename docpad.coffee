@@ -2,6 +2,8 @@ docpadConfig = {
 
     outPath: "../sharovatov.github.io"
 
+    port: 12345
+
     plugins:
         sitemap:
             cachetime: 600000
