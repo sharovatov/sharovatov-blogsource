@@ -4,22 +4,51 @@ layout: default
 ---
 <% month_name = (x) -> ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][x] %>
 
-<h1>Posts</h1>
+<h1>Обо мне</h1>
+<p>В IT я с 2001 года, начал с системного администрирования сетей и домена Active Directory.</p>
+<p>С 2004 в веб-программировании. Много программировал на javascript, о чём сохранились записи тут в архиве ниже.</p>
+<p>С 2007 года начал руководить, совмещал с программированием много лет.</p>
+<p>С 2016 занимаюсь только управлением: организацией процессов разработки, помощью командам и тимлидам в росте и развитии. Люблю педагогику. Через моё менторство прошло уже больше 30 тимлидов.</p>
+<p>Много выступаю, добавляю <a href="https://www.youtube.com/playlist?list=PLFtS8Ah0wZvWS37oveJ0-D5K6V7GWUpqY">ссылки в плейлист на ютубе</a></p>
+<p>Люблю читать лекции, чаще всего это делаю в компаниях, с которыми сотрудничаю, готов прийти и к вам в компанию. Выступал в Рокетбанке, Badoo, AM-Tech, Mail.ru, Pixonic.</p>
+<p>Занимаюсь просветительской работой:</p>
+<ul>
+<li>Работаю над <a href="https://github.com/sharovatov/teamlead/blob/master/recruiting.md">словарём рекрутера</a></li>
+<li>Составил и поддерживаю вместе с сообществом <a href="https://github.com/sharovatov/teamlead/blob/master/company_interview.md">список вопросов, на которые стоит получить ответ у компании на собеседовании</a></li>
+<li>Провожу исследование теории и практики <a href="https://github.com/sharovatov/teamlead/blob/master/codereview.md">ревизии кода</a> в процессе производства ПО</li>
+</ul>
+
+<h1>Зачем и как связаться</h1>
+<p>С удовольствием помогу вам и вашей компании со следующими темами:</p>
+<ul>
+<li>найм, удержание, мотивация, адаптация, увольнения, обучение, рост и развитие</li>
+<li>hr-brand</li>
+<li>культура и практика менторства</li>
+<li>процессы разработки ПО</li>
+</ul>
+<p>Я есть в телеграмме — <a href="http://t.me/vitaly19842">@vitaly19842</a>, также можно просто написать на почту <a href="mailto:vitaly.sharovatov@gmail.com">vitaly.sharovatov@gmail.com</a></p>
+
+<h1>Записи</h1>
 <ul class="postslist">
 <% for post in @getCollection('entries').toJSON(): %>
     <li><a href="<%= post.url %>"><%= post.title %></a> <span class="date"><%= month_name(post.date.getMonth()) + " " + post.date.getFullYear() %></span></li>
 <% end %>
 </ul>
 
-<h1>Talks</h1>
+<h1>Доклады и лекции</h1>
+<p>Нажмите на иконку плейлиста в правом верхнем углу видео, чтобы посмотреть все</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed?listType=playList&list=PLFtS8Ah0wZvWS37oveJ0-D5K6V7GWUpqY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--
+<h1>Доклады и лекции</h1>
 <ul class="postslist">
 <% for talk in @getCollection('talks').toJSON(): %>
     <li><a href="<%= talk.url %>"><%= talk.title %></a> @ <%= talk.place %> <span class="date"><%= month_name(talk.date.getMonth()) + " " + talk.date.getFullYear() %></span></li>
 <% end %>
 </ul>
+-->
 
-<h1>Archive posts</h1>
-<p>These posts are left for historical reasons only</p>
+<h1>Архивные записи</h1>
+<p>Раньше я писал только о технической стороне разработки</p>
 <ul class="postslist">
 <% for post in @getCollection('posts').toJSON(): %>
     <li><a href="<%= post.url %>"><%= post.title %></a> <span class="date"><%= month_name(post.date.getMonth()) + " " + post.date.getFullYear() %></span></li>
