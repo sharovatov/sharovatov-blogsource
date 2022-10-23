@@ -21,7 +21,7 @@ Basically, here’s what behaviour you get with different X-FRAME-OPTIONS values
 	</tr>
 	<tr>
 		<td valign="top" width="201">`ALLOW FROM http://host`</td>
-		<td valign="top" width="500">browser will only render the iframe contents if the iframe host is httр://host </td>
+		<td valign="top" width="500">browser will only render the iframe contents if the iframe host is http://host </td>
 	</tr>
 	</tbody>
 </table>
