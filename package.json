@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "description": "sharovatov.github.io blog",
   "dependencies": {
-    "docpad": ">=6.59.6"
+    "docpad": ">=6.83.2"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "start": "node_modules/docpad/bin/docpad-server"
   },
   "devDependencies": {
-    "docpad": ">=6.60.3",
-    "docpad-plugin-coffeescript": ">=2.2.3",
-    "docpad-plugin-eco": ">=2.3.0",
-    "docpad-plugin-livereload": ">=2.5.6",
-    "docpad-plugin-marked": ">=2.2.0",
-    "docpad-plugin-related": ">=2.2.2",
-    "docpad-plugin-services": ">=2.5.0",
-    "docpad-plugin-sitemap": ">=2.2.0"
+    "docpad": ">=6.83.2",
+    "docpad-plugin-coffeescript": ">=2.11.0",
+    "docpad-plugin-eco": ">=2.8.0",
+    "docpad-plugin-livereload": ">=2.11.0",
+    "docpad-plugin-marked": ">=2.10.0",
+    "docpad-plugin-related": ">=2.8.0",
+    "docpad-plugin-services": ">=2.12.0",
+    "docpad-plugin-sitemap": ">=2.8.0"
   }
 }
